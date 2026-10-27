@@ -69,8 +69,8 @@ export default function App() {
   const [animatingDoor, setAnimatingDoor] = useState<number | null>(null);
 
   const handleOpenDoor = useCallback((dayNumber: number) => {
-    if (dayNumber === 5) {
-      setAnimatingDoor(5);
+    if (dayNumber === 4) {
+      setAnimatingDoor(4);
       setTimeout(() => {
         setCurrentContentIndex((prev) => (prev + 1) % images.length);
         setSelectedDay(dayNumber);
@@ -83,7 +83,7 @@ export default function App() {
 
   // Auto-restart the loop 20 seconds after the door is opened
   useEffect(() => {
-    if (selectedDay === 5) {
+    if (selectedDay === 4) {
       const timer = setTimeout(() => {
         setSelectedDay(null);
         setShowStartPage(true);
@@ -106,7 +106,7 @@ export default function App() {
   useEffect(() => {
     if (!showStartPage && selectedDay === null && animatingDoor === null) {
       const timer = setTimeout(() => {
-        handleOpenDoor(5);
+        handleOpenDoor(4);
       }, 5000);
       return () => clearTimeout(timer);
     }
@@ -156,7 +156,7 @@ export default function App() {
         <main className="max-w-5xl mx-auto pb-12">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
             {displayOrder.map((dayNumber) => {
-              const isClickable = dayNumber === 5;
+              const isClickable = dayNumber === 4;
               
               return (
                 <motion.div
@@ -194,7 +194,7 @@ export default function App() {
 
       {/* Zoom-in Modal Overlay */}
       <AnimatePresence>
-        {selectedDay === 5 && (
+        {selectedDay === 4 && (
           <>
             {/* Backdrop */}
             <motion.div
