@@ -233,7 +233,7 @@ export default function App() {
                       {selectedDay}
                     </div>
                     <h3 className="text-xl font-bold text-abb-dark font-serif">
-                      Türchen {selectedDay}: Bitte QR-Code im Bild scannen!
+                      Türchen {selectedDay}: Das Team von ABB TS wünscht allen ein wunderschönes Jahresende!
                     </h3>
                   </div>
                   <button
