@@ -63,7 +63,7 @@ body {
   top: 10%;
   left: 0;
   pointer-events: none;
-  z-index: 5;
+  z-index: 30;
   animation: fly-sleigh 20s ease-in-out infinite;
   white-space: nowrap;
 }
@@ -77,3 +77,61 @@ body {
   display: inline-block;
   animation: gallop 0.8s infinite ease-in-out;
 }
+
+/* Traditional wooden Advent windows — no image assets required. */
+.advent-window {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 7px solid #66402a;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #63321f 0%, #9a5233 12%, #6c3424 48%, #a65d3b 88%, #63321f 100%);
+  box-shadow: inset 0 0 0 3px #b27a4e, inset 0 0 18px #2c130e, 0 8px 18px #0008;
+  color: #fff1cc;
+  isolation: isolate;
+  overflow: visible;
+}
+.advent-window:nth-child(3n+2) { background: linear-gradient(90deg, #173b32, #2b6450 18%, #173f35 82%, #102e28); }
+.advent-window:nth-child(3n) { background: linear-gradient(90deg, #5b241f, #9c342b 18%, #6e2824 82%, #481d1a); }
+.advent-window__panel {
+  position: absolute;
+  inset: 9px;
+  border: 2px solid #c18a55;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 3px #0004, inset 0 0 22px #0005;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.advent-window__number {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.8rem, 3.3vw, 3.4rem);
+  line-height: 1;
+  font-weight: bold;
+  color: #fff0c6;
+  text-shadow: 0 2px 3px #28100e, 0 0 10px #ffbd5280;
+}
+.advent-window__ornament { font-size: clamp(1rem, 1.8vw, 1.6rem); color: #ffd58b; text-shadow: 0 0 8px #ffc45c; }
+.advent-window__snow {
+  position: absolute;
+  z-index: 3;
+  top: -9px;
+  left: -5px;
+  right: -5px;
+  height: 12px;
+  border-radius: 80% 80% 40% 40%;
+  background: #f7fbff;
+  box-shadow: 0 3px 5px #d9ecff9c;
+  pointer-events: none;
+}
+.advent-window__lights { position: absolute; z-index: 4; top: 7px; font-size: 11px; color: #ffe8a4; text-shadow: 0 0 7px #ffc44a; pointer-events: none; }
+.advent-window__knob { position: absolute; right: 9px; top: 55%; width: 8px; height: 8px; border-radius: 50%; background: #eec67a; box-shadow: 0 0 4px #ffda7d; }
+.advent-window__sill { position: absolute; z-index: 3; bottom: -8px; left: -7px; right: -7px; height: 11px; border-radius: 3px 3px 7px 7px; background: linear-gradient(#f8fcff 0 55%, #c4d9e5); pointer-events: none; }
+.advent-window--active { cursor: pointer; border-color: #e7b450; box-shadow: 0 0 18px #ffd36d, 0 0 35px #ffc34c88, inset 0 0 12px #ffe0a2; }
+.advent-window--active:hover, .advent-window--active:focus-visible { outline: 3px solid #ffedaa; outline-offset: 3px; }
+.advent-window--inactive { cursor: default; }
+@media (max-width: 480px) { .advent-window { border-width: 5px; } .advent-window__panel { inset: 6px; } }

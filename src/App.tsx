@@ -163,11 +163,11 @@ export default function App() {
                   key={dayNumber}
                   layoutId={`door-${dayNumber}`}
                   onClick={() => isClickable && handleOpenDoor(dayNumber)}
-                  className={`aspect-square bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border-2 border-dashed border-gray-300 flex items-center justify-center relative overflow-hidden ${
-                    isClickable 
-                      ? 'hover:border-abb-red hover:shadow-abb-red/30 hover:shadow-2xl cursor-pointer group transition-all' 
-                      : 'opacity-90 cursor-default'
-                  }`}
+                  className={`advent-window ${
+                    isClickable
+                      ? 'advent-window--active'
+                      : 'advent-window--inactive'
+                    }`}
                   animate={animatingDoor === dayNumber ? {
                     scale: [1, 1.1, 1.1, 1.1, 1],
                     rotate: [0, -10, 10, -10, 10, -5, 5, 0],
@@ -182,9 +182,24 @@ export default function App() {
                     <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent to-red-50 opacity-50 pointer-events-none" />
                   )}
                   
-                  <span className={`text-4xl md:text-5xl font-bold text-abb-dark drop-shadow-sm font-serif ${isClickable ? 'group-hover:text-abb-red transition-colors' : ''}`}>
-                    {dayNumber}
-                  </span>
+                  <div className="advent-window__snow" aria-hidden="true" />
+
+                  <div className="advent-window__lights" aria-hidden="true">
+                    ✦ · ✦ · ✦
+                  </div>
+
+                  <div className="advent-window__panel">
+                    <span className="advent-window__number">
+                      {dayNumber}
+                    </span>
+
+                    <span className="advent-window__ornament" aria-hidden="true">
+                      {['✶', '❄', '★', '✦', '❅', '✧'][dayNumber % 6]}
+                    </span>
+                  </div>
+
+                  <div className="advent-window__knob" aria-hidden="true" />
+                  <div className="advent-window__sill" aria-hidden="true" />
                 </motion.div>
               );
             })}
